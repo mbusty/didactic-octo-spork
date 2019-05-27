@@ -10,6 +10,7 @@ function respond() {
       phrase3 = /^\/penis$/;
       phrase4 = /^\/meow$/;
       phrase5 = /^\/serenade me$/;
+      phrase6 = /^\/moose$/;
 
 
   if(request.text && phrase1.test(request.text)) {
@@ -36,6 +37,11 @@ function respond() {
     postMessage(5);
     this.res.end();
   }
+  else if (request.text && phrase6.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage(6);
+    this.res.end();
+  }
   else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -56,6 +62,20 @@ function postMessage(num) {
     botResponse = "https://www.youtube.com/watch?v=kvxCU_lQwKM"
   } else if (num == 5) {
     botResponse = "https://open.spotify.com/playlist/4R3S1skuC8p1saAA1EUvnG"
+  } else if (num == 6) {
+    botResponse = " ___            ___
+/   \          /   \
+\_   \        /  __/
+ _\   \      /  /__
+ \___  \____/   __/
+     \_       _/
+       | @ @  \_
+       |
+     _/     /\
+    /o)  (o/\ \_
+    \_____/ /
+      \____/
+"
   }
 
 
