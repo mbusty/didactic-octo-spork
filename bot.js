@@ -63,19 +63,7 @@ function postMessage(num) {
   } else if (num == 5) {
     botResponse = "https://open.spotify.com/playlist/4R3S1skuC8p1saAA1EUvnG"
   } else if (num == 6) {
-    botResponse = " ___            ___
-/   \          /   \
-\_   \        /  __/
- _\   \      /  /__
- \___  \____/   __/
-     \_       _/
-       | @ @  \_
-       |
-     _/     /\
-    /o)  (o/\ \_
-    \_____/ /
-      \____/
-"
+    botResponse = "frig off"
   }
 
 
