@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a GroupMe Bot.
+This is a GroupMe Bot. I'm playing around with some cool stuff I could do with javascript.
 
 # GitHub instructions
 

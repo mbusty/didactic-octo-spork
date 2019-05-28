@@ -1,45 +1,17 @@
 var HTTPS = require('https');
-//var cool = require('cool-ascii-faces');
+const request = require('request');
+const cheerio = require('cheerio');
 
 var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      phrase1 = /^\/ciaraan$/;
-      phrase2 = /^\/thot$/;
-      phrase3 = /^\/penis$/;
-      phrase4 = /^\/meow$/;
-      phrase5 = /^\/serenade me$/;
-      phrase6 = /^\/moose$/;
+      phrase1 = /^\/uod$/;
 
 
   if(request.text && phrase1.test(request.text)) {
     this.res.writeHead(200);
     postMessage(1);
-    this.res.end();
-  } else if (request.text && phrase2.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage(2);
-    this.res.end();
-  }
-  else if (request.text && phrase3.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage(3);
-    this.res.end();
-  }
-  else if (request.text && phrase4.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage(4);
-    this.res.end();
-  }
-  else if (request.text && phrase5.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage(5);
-    this.res.end();
-  }
-  else if (request.text && phrase6.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage(6);
     this.res.end();
   }
   else {
@@ -53,19 +25,23 @@ function postMessage(num) {
   var botResponse, options, body, botReq;
 
     if(num == 1){
-    botResponse = "Ciaraan is the BIG gay.";
-  } else if (num == 2) {
-    botResponse = "All women are queens!"
-  } else if (num == 3) {
-    botResponse = "8===========D"
-  } else if (num == 4) {
-    botResponse = "https://www.youtube.com/watch?v=kvxCU_lQwKM"
-  } else if (num == 5) {
-    botResponse = "https://open.spotify.com/playlist/4R3S1skuC8p1saAA1EUvnG"
-  } else if (num == 6) {
-    botResponse = "frig off"
+      // uod
+      return new Promise(function (resolve, reject){
+        request('https://vtcc-ros.github.io/POD-HTML.htm', (error, response, html) => {
+    if (!error && response.statusCode == 200){
+      const body = cheerio.load(html).text();
+      var uod = parseuod(body);
+      var date = parsedate(body);
+      var finalstring = "The Uniform of the Day for " + date + " is " + uod;
+      //conv.close(finalstring);
+      console.log(finalstring);
+      botResponse = finalstring;
+      resolve();
+    }
+  });
+  });
+    //botResponse = "Ciaraan is the BIG gay.";
   }
-
 
 
   options = {
@@ -98,5 +74,31 @@ function postMessage(num) {
   botReq.end(JSON.stringify(body));
 }
 
+function parseuod(uod) {
+  var uodstring1 = uod.split('Uniform of the Day:')[1];
+  var uodstring2 = uodstring1.split("<o")[0];
+  return uodstring2;
+}
+
+function parsedate(date) {
+  var month = ['January', 'February', 'March', 'April', 'May', 'August', 'September', 'October', 'November', 'Decemeber'];
+  var year = [2019, 2020, 2021, 2022, 2023, 2024, 2025];
+  var dateparse1 = date.split('PLAN OF THE DAY')[1];
+  var dateparse2 = dateparse1.split('VIRGINIA TECH')[0];
+  var finalstring = "";
+  for (i = 0; i < month.length; i++){
+    for (j = 0; j < year.length; j++){
+    if (dateparse2.indexOf(month[i]) >= 1){
+      if (dateparse2.indexOf(year[j]) >= 1){
+  	  var index = dateparse2.indexOf(month[i]);
+      var start = index - 3;
+      var end = dateparse2.indexOf(year[j]) + 4;
+      finalstring = dateparse2.substring(start, end);
+      }
+      }
+    }
+  }
+  return finalstring;
+}
 
 exports.respond = respond;
