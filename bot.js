@@ -1,6 +1,4 @@
 var HTTPS = require('https');
-const request = require('request');
-const cheerio = require('cheerio');
 
 var botID = process.env.BOT_ID;
 
@@ -27,6 +25,7 @@ function postMessage(num) {
     if(num == 1){
 
     botResponse = "yeet";
+    //console.log(botResponse);
   }
 
 
