@@ -37,9 +37,9 @@ function postMessage(num) {
     botResponse = "yeet";
     //console.log(botResponse);
   }else if (num == 2){
-    botResponse = "https://imgur.com/TkF45e9.gif";
+    botResponse = "https://i.imgur.com/TkF45e9.gif";
   }else if (num == 3){
-    botResponse = "https://imgur.com/183DLsI.gif";
+    botResponse = "https://i.imgur.com/183DLsI.gif";
   }
 
 
