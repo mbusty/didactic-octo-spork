@@ -5,11 +5,16 @@ var botID = process.env.BOT_ID;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       phrase1 = /^\/test$/;
+      phrase2 = /^\/yeahbaby$/;
 
 
   if(request.text && phrase1.test(request.text)) {
     this.res.writeHead(200);
     postMessage(1);
+    this.res.end();
+  }else if (request.text && phrase1.test(request.text)){
+    this.res.writeHead(200);
+    postMessage(2);
     this.res.end();
   }
   else {
@@ -26,6 +31,8 @@ function postMessage(num) {
 
     botResponse = "yeet";
     //console.log(botResponse);
+  }else if (num == 2){
+    botResponse = "https://i.groupme.com/480x202.gif.53639c29cebf4fefa50f39145ae9c500.large";
   }
 
 
