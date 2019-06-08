@@ -6,6 +6,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       phrase1 = /^\/test$/;
       phrase2 = /^\/yeahbaby$/;
+      phrase3 = /^\/okayyy$/;
 
 
   if(request.text && phrase1.test(request.text)) {
@@ -15,6 +16,10 @@ function respond() {
   }else if (request.text && phrase2.test(request.text)){
     this.res.writeHead(200);
     postMessage(2);
+    this.res.end();
+  }else if (request.text && phrase3.test(request.text)){
+    this.res.writeHead(200);
+    postMessage(3);
     this.res.end();
   }
   else {
@@ -32,7 +37,9 @@ function postMessage(num) {
     botResponse = "yeet";
     //console.log(botResponse);
   }else if (num == 2){
-    botResponse = "https://imgur.com/97dc7sU.gif";
+    botResponse = "https://imgur.com/TkF45e9.gif";
+  }else if (num == 3){
+    botResponse = "https://imgur.com/183DLsI.gif";
   }
 
 
