@@ -32,7 +32,7 @@ function postMessage(num) {
     botResponse = "yeet";
     //console.log(botResponse);
   }else if (num == 2){
-    botResponse = "https://imgur.com/97dc7sU";
+    botResponse = "https://imgur.com/97dc7sU.gif";
   }
 
 
