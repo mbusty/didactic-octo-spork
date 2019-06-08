@@ -32,7 +32,7 @@ function postMessage(num) {
     botResponse = "yeet";
     //console.log(botResponse);
   }else if (num == 2){
-    botResponse = "https://i.groupme.com/480x202.gif.53639c29cebf4fefa50f39145ae9c500.large";
+    botResponse = "https://imgur.com/97dc7sU";
   }
 
 
