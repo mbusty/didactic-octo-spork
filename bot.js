@@ -12,7 +12,7 @@ function respond() {
     this.res.writeHead(200);
     postMessage(1);
     this.res.end();
-  }else if (request.text && phrase1.test(request.text)){
+  }else if (request.text && phrase2.test(request.text)){
     this.res.writeHead(200);
     postMessage(2);
     this.res.end();
